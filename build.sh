@@ -2,6 +2,22 @@
 #Script to build buildroot configuration
 #Author: Siddhant Jajoo
 
+# Save the original PATH
+ORIGINAL_PATH=$PATH
+
+# Clean the PATH for the build
+# Remove paths that contain spaces
+CLEAN_PATH=$(echo "$ORIGINAL_PATH" | tr ':' '\n' | grep -v ' ' | tr '\n' ':')
+
+# Remove current directory (.) from PATH
+CLEAN_PATH=$(echo "$CLEAN_PATH" | tr ':' '\n' | grep -v '^\.$' | tr '\n' ':')
+
+# Remove empty entries (::) and trailing colons (:)
+CLEAN_PATH=$(echo "$CLEAN_PATH" | sed -e 's/::/:/g' -e 's/:$//')
+
+# Export the cleaned PATH for the build
+export PATH=$CLEAN_PATH
+
 source shared.sh
 
 EXTERNAL_REL_BUILDROOT=../base_external
@@ -31,3 +47,4 @@ else
 	make -C buildroot BR2_EXTERNAL=${EXTERNAL_REL_BUILDROOT}
 
 fi
+export PATH=$ORIGINAL_PATH
