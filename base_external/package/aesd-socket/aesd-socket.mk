@@ -6,7 +6,7 @@
 ##############################################################
 
 #TODO: Fill up the contents below in order to reference your assignment 3 git contents
-AESD_SOCKET_VERSION = 590057c0a9c0160ebdaebecc53f7cc2a9d99d892
+AESD_SOCKET_VERSION = ca7bcd7802ca973f3cf8aa5d5f25115aa3950047
 # Note: Be sure to reference the *ssh* repository URL here (not https) to work properly
 # with ssh keys and the automated build/test system.
 # Your site should start with git@github.com:
@@ -14,8 +14,8 @@ AESD_SOCKET_SITE = git@github.com:cu-ecen-aeld/assignments-3-and-later-mr16048.g
 AESD_SOCKET_SITE_METHOD = git
 AESD_SOCKET_GIT_SUBMODULES = YES
 
-define AESDSOCKET_BUILD_CMDS
-	$(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D)/server all
+define AESD_SOCKET_BUILD_CMDS
+	$(MAKE) CC="$(TARGET_CC)" CFLAGS="$(TARGET_CFLAGS)" $(TARGET_CONFIGURE_OPTS) -C $(@D)/server all
 endef
 
 # TODO add your writer, finder and finder-test utilities/scripts to the installation steps below
