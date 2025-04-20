@@ -22,9 +22,9 @@ jobs:
                  mkdir -p ~/.ssh
                  ssh-keygen -R github.com || true
                  ssh-keyscan github.com >> ~/.ssh/known_hosts
-          - name: Clean previous Buildroot build
-            working-directory: buildroot
-            run: make BR2_EXTERNAL=../base_external aesdsocket-dirclean
+          # - name: Clean previous Buildroot build
+          #   working-directory: buildroot
+          #   run: make BR2_EXTERNAL=../base_external aesdsocket-dirclean
           - name: Run full test
             env:
               GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
