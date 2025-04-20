@@ -7,7 +7,7 @@ on:
             - '*'
 jobs:
     full-test:
-        container: cuaesd/aesd-autotest:24-assignment5-buildroot
+        # contain3er: cuaesd/aesd-autotest:24-assignment5-buildroot
         runs-on: self-hosted
         timeout-minutes: 120
         steps:
@@ -24,7 +24,7 @@ jobs:
                  ssh-keyscan github.com >> ~/.ssh/known_hosts
           - name: Clean previous Buildroot build
             working-directory: buildroot
-            run: make clean
+            run: make aesdsocket-dirclean
           - name: Run full test
             env:
               GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
