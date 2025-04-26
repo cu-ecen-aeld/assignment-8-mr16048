@@ -6,7 +6,7 @@
 ##############################################################
 
 #TODO: Fill up the contents below in order to reference your assignment 3 git contents
-AESD_SOCKET_VERSION = a33e69d000957c864f0da17c96323d04ff8dfaa5
+AESD_SOCKET_VERSION = fc9c02beccafb03830701b109a9529a92cfd65b6
 # Note: Be sure to reference the *ssh* repository URL here (not https) to work properly
 # with ssh keys and the automated build/test system.
 # Your site should start with git@github.com:
