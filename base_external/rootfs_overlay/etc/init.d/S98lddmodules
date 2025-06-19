@@ -1,4 +1,5 @@
 #!/bin/sh
+MOD_DIR=""
 FAULTY="faulty"
 HELLO="hello"
 
