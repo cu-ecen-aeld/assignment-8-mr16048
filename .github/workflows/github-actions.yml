@@ -29,33 +29,7 @@ jobs:
             env:
               GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
               FORCE_UNSAFE_CONFIGURE: 1
-            run: ./full-test.sh
-          - name: Debug MPFR/GMP link issue
-            working-directory: ${{ github.workspace }}/buildroot
-            run: |
-              set -eux
-              O=output  # adjust if your O= differs
-              echo "== show failing config.log =="
-              f=$(ls -d "$O"/build/host-mpfr-*/ 2>/dev/null | tail -n1) || true
-              if [ -n "${f:-}" ] && [ -f "$f/config.log" ]; then
-                tail -n 120 "$f/config.log"
-              else
-                echo "config.log not found yet (host-mpfr didn't run or already cleaned)."
-              fi
-
-              echo "== what libgmp does Buildroot have? =="
-              ls -l "$O/host/include/gmp.h" "$O"/host/lib/libgmp.* 2>/dev/null || true
-              file "$O"/host/lib/libgmp.so* 2>/dev/null | head || true
-
-              echo "== env that could interfere =="
-              type -a gcc || true
-              echo "LD_LIBRARY_PATH=${LD_LIBRARY_PATH-}"
-              echo "LIBRARY_PATH=${LIBRARY_PATH-}"
-              echo "PKG_CONFIG_PATH=${PKG_CONFIG_PATH-}"
-
-              echo "== system libgmp candidates (if any) =="
-              find /usr -name 'libgmp.so*' 2>/dev/null | sort | head
-
+            run: ./full-test.sh        
           - name: Cleanup
             if: always()
             run: |
