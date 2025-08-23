@@ -39,7 +39,7 @@ then
 	else
 		echo "Run ./save_config.sh to save this as the default configuration in ${AESD_MODIFIED_DEFCONFIG}"
 		echo "Then add packages as needed to complete the installation, re-running ./save_config.sh as needed"
-		make -C buildroot defconfig BR2_EXTERNAL=${EXTERNAL_REL_BUILDROOT} BR2_DEFCONFIG=${AESD_DEFAULT_DEFCONFIG} V=1
+		make -C buildroot defconfig BR2_EXTERNAL=${EXTERNAL_REL_BUILDROOT} BR2_DEFCONFIG=${AESD_DEFAULT_DEFCONFIG}  O=output V=1
 	fi
 else
 	echo "USING EXISTING BUILDROOT CONFIG"
